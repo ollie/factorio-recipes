@@ -1,0 +1,17 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    ice_nine (0.11.2)
+    multi_json (1.12.1)
+    oj (3.0.10)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  ice_nine
+  multi_json
+  oj
+
+BUNDLED WITH
+   1.15.3

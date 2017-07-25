@@ -1,0 +1,219 @@
+[
+  //////////////
+  // Ores/Fluids
+  //////////////
+
+  {
+    "name": "Iron ore",
+    "time": 1,
+    "ingredients": []
+  },
+  {
+    "name": "Copper ore",
+    "time": 1,
+    "ingredients": []
+  },
+  {
+    "name": "Coal",
+    "time": 1,
+    "ingredients": []
+  },
+  {
+    "name": "Petroleum gas",
+    "time": 1,
+    "ingredients": []
+  },
+
+  /////////////
+  // Logicstics
+  /////////////
+
+  {
+    "name": "Transport belt",
+    "time": 0.5,
+    "amount": 2,
+    "ingredients": [
+      { "name": "Iron plate" },
+      { "name": "Iron gear wheel" }
+    ]
+  },
+  {
+    "name": "Inserter",
+    "time": 0.5,
+    "ingredients": [
+      { "name": "Electronic circuit" },
+      { "name": "Iron gear wheel" },
+      { "name": "Iron plate" }
+    ]
+  },
+  {
+    "name": "Pipe",
+    "time": 0.5,
+    "ingredients": [
+      { "name": "Iron plate", "amount": 2 }
+    ]
+  },
+
+  /////////////
+  // Production
+  /////////////
+
+  {
+    "name": "Electric mining drill",
+    "time": 2,
+    "ingredients": [
+      { "name": "Electronic circuit", "amount": 5 },
+      { "name": "Iron gear wheel", "amount": 10 },
+      { "name": "Iron plate", "amount": 20 }
+    ]
+  },
+
+  ////////////////////////
+  // Intermediate Products
+  ////////////////////////
+
+  {
+    "name": "Iron plate",
+    "time": 3.5,
+    "ingredients": [
+      { "name": "Iron ore" }
+    ]
+  },
+  {
+    "name": "Copper plate",
+    "time": 3.5,
+    "ingredients": [
+      { "name": "Copper ore" }
+    ]
+  },
+  {
+    "name": "Steel plate",
+    "time": 35,
+    "ingredients": [
+      { "name": "Iron plate", "amount": 10 }
+    ]
+  },
+  {
+    "name": "Iron gear wheel",
+    "time": 0.5,
+    "ingredients": [
+      { "name": "Iron plate", "amount": 4 }
+    ]
+  },
+  {
+    "name": "Electronic circuit",
+    "time": 0.5,
+    "ingredients": [
+      { "name": "Iron plate", "amount": 2 },
+      { "name": "Copper plate", "amount": 10 }
+    ]
+  },
+  {
+    "name": "Advanced circuit",
+    "time": 6,
+    "ingredients": [
+      { "name": "Electronic circuit", "amount": 2 },
+      { "name": "Plastic bar", "amount": 4 },
+      { "name": "Copper cable", "amount": 8 }
+    ]
+  },
+  {
+    "name": "Plastic bar",
+    "time": 1,
+    "amount": 2,
+    "ingredients": [
+      { "name": "Coal" },
+      { "name": "Petroleum gas", "amount": 20 }
+    ]
+  },
+  {
+    "name": "Copper cable",
+    "time": 0.5,
+    "amount": 2,
+    "ingredients": [
+      { "name": "Copper plate" }
+    ]
+  },
+  {
+    "name": "Engine unit",
+    "time": 10,
+    "ingredients": [
+      { "name": "Steel plate" },
+      { "name": "Iron gear wheel" },
+      { "name": "Pipe", "amount": 2 }
+    ]
+  },
+  {
+    "name": "Science pack 1",
+    "time": 5,
+    "ingredients": [
+      { "name": "Copper plate" },
+      { "name": "Iron gear wheel" }
+    ]
+  },
+  {
+    "name": "Science pack 2",
+    "time": 6,
+    "ingredients": [
+      { "name": "Inserter" },
+      { "name": "Transport belt" }
+    ]
+  },
+  {
+    "name": "Science pack 3",
+    "time": 12,
+    "ingredients": [
+      { "name": "Advanced circuit" },
+      { "name": "Engine unit" },
+      { "name": "Electric mining drill" }
+    ]
+  },
+  {
+    "name": "Military science pack",
+    "time": 10,
+    "amount": 2,
+    "ingredients": [
+      { "name": "Piercing rounds magazine" },
+      { "name": "Grenade" },
+      { "name": "Gun turret" }
+    ]
+  },
+
+  /////////
+  // Combat
+  /////////
+
+  {
+    "name": "Firearm magazine",
+    "time": 1,
+    "ingredients": [
+      { "name": "Iron plate", "amount": 4 }
+    ]
+  },
+  {
+    "name": "Piercing rounds magazine",
+    "time": 3,
+    "ingredients": [
+      { "name": "Firearm magazine" },
+      { "name": "Steel plate" },
+      { "name": "Copper plate", "amount": 5 }
+    ]
+  },
+  {
+    "name": "Grenade",
+    "time": 8,
+    "ingredients": [
+      { "name": "Iron plate", "amount": 5 },
+      { "name": "Coal", "amount": 10 }
+    ]
+  },
+  {
+    "name": "Gun turret",
+    "time": 8,
+    "ingredients": [
+      { "name": "Iron gear wheel", "amount": 10 },
+      { "name": "Copper plate", "amount": 10 },
+      { "name": "Iron plate", "amount": 20 }
+    ]
+  }
+]
