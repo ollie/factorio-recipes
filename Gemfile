@@ -6,3 +6,7 @@ gem 'oj'
 
 gem 'pry', require: false
 gem 'pry-doc', require: false
+
+group :test do
+  gem 'rspec'
+end

@@ -2,26 +2,105 @@ require 'bundler'
 Bundler.require
 
 require 'ice_nine/core_ext/object'
-require_relative 'lib/recipes'
+require_relative 'lib/recipe'
 
-def print_recipes(recipes, level: 1)
+# Print recipe
+def pr(recipe, level: 1)
   indent = '  ' * (level - 1)
 
-  recipes.each do |recipe|
-    puts "#{indent}#{recipe.amount} #{recipe.name}"
+  puts "#{indent}#{recipe.fetch(:amount)} #{recipe.fetch(:name)}"
 
-    if recipe.ingredients.any?
-      print_recipes(recipe.ingredients, level: level + 1)
-    end
+  recipe.fetch(:ingredients).each do |ingredient|
+    pr(ingredient, level: level + 1)
+  end
+
+  return unless level == 1
+
+  puts
+  recipe.fetch(:raws).each do |name, amount|
+    puts "#{amount} #{name}"
   end
 end
 
-# print_recipes([Recipes.all[7]])
+# 1 Offshore pump
+#   2 Electronic circuit
+#     2*2=4 Iron plate
+#     2*10=20 Copper cable
+#       20*1/2=10 Copper plate
+#   1 Pipe
+#     1*2=2 Iron plate
+#   1 Iron gear wheel
+#     1*4=4 Iron plate
+#
+# 10 Iron plate
+# 10 Copper plate
+pr Recipe.calculate('Offshore pump', 1)
 
-# print_recipes([Recipes.find!('Assembling machine 2')])
-# Iron plate: 105
-# Copper plate: 40
+# 1 Assembling machine 2
+#   20 Iron plate
+#   5 Electronic circuit
+#     5*2=10 Iron plate
+#     5*10=50 Copper cable
+#       50*1/2=25 Copper plate
+#   10 Iron gear wheel
+#     10*4=40 Iron plate
+#   1 Assembling machine 1
+#     3 Electronic circuit
+#       3*2=6 Iron plate
+#       3*10=30 Copper cable
+#         30*1/2=15 Copper plate
+#     5 Iron gear wheel
+#       5*4=20 Iron plate
+#     9 Iron plate
+#
+# 105 Iron plate
+# 40 Copper plate
+# pr Recipe.calculate('Assembling machine 2', 1)
 
-print_recipes([Recipes.find!('Offshore pump')])
-# Iron plate: 10
-# Copper plate: 10
+# 1 Science pack 1
+#   1 Copper plate
+#   1 Iron gear wheel
+#     1*4=4 Iron plate
+#
+# 4 Iron plate
+# 1 Copper plate
+# pr Recipe.calculate('Science pack 1', 1)
+
+# 1 Science pack 2
+#   1 Inserter
+#     1 Electronic circuit
+#       1*2=2 Iron plate
+#       1*10=10 Copper cable
+#         10*1/2=5 Copper plate
+#     1 Iron gear wheel
+#       1*4=4 Iron plate
+#     1 Iron plate
+#   1 Transport belt
+#     1/2*1=1/2 Iron plate
+#     1/2*1=1/2 Iron gear wheel
+#       1/2*4=2 Iron plate
+#
+# 9.5 Iron plate
+# 5 Copper plate
+# pr Recipe.calculate('Science pack 2', 1)
+
+# 1 Military science pack
+#   1/2*1=1/2 Piercing rounds magazine
+#     1/2*1=1/2 Firearm magazine
+#       1/2*4=2 Iron plate
+#     1/2*1=1/2 Steel plate
+#     1/2*5=5/2 Copper plate
+#   1/2*1=1/2 Grenade
+#     1/2*5=5/2 Iron plate
+#     1/2*10=5 Coal
+#   1/2*1=1/2 Gun turret
+#     1/2*10=5 Iron gear wheel
+#       5*4=20 Iron plate
+#     1/2*10=5 Copper plate
+#     1/2*20=10 Iron plate
+#
+# 5 Coal
+# 34.5 Iron plate (39.5 if Steel's Iron plates are included)
+# 7.5 Copper plate
+# 0.5 Steel plate
+# pr Recipe.calculate('Military science pack', 1)

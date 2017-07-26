@@ -5,21 +5,25 @@
 
   {
     "name": "Iron ore",
+    "ore": true,
     "time": 1,
     "ingredients": []
   },
   {
     "name": "Copper ore",
+    "ore": true,
     "time": 1,
     "ingredients": []
   },
   {
     "name": "Coal",
+    "ore": true,
     "time": 1,
     "ingredients": []
   },
   {
     "name": "Petroleum gas",
+    "ore": true,
     "time": 1,
     "ingredients": []
   },
@@ -102,6 +106,7 @@
 
   {
     "name": "Iron plate",
+    "raw": true,
     "time": 3.5,
     "ingredients": [
       { "name": "Iron ore" }
@@ -109,6 +114,7 @@
   },
   {
     "name": "Copper plate",
+    "raw": true,
     "time": 3.5,
     "ingredients": [
       { "name": "Copper ore" }
@@ -116,6 +122,7 @@
   },
   {
     "name": "Steel plate",
+    "raw": true,
     "time": 35,
     "ingredients": [
       { "name": "Iron plate", "amount": 10 }
@@ -133,7 +140,7 @@
     "time": 0.5,
     "ingredients": [
       { "name": "Iron plate", "amount": 2 },
-      { "name": "Copper plate", "amount": 10 }
+      { "name": "Copper cable", "amount": 10 }
     ]
   },
   {
