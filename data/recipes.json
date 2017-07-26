@@ -67,6 +67,34 @@
       { "name": "Iron plate", "amount": 20 }
     ]
   },
+  {
+    "name": "Offshore pump",
+    "time": 0.5,
+    "ingredients": [
+      { "name": "Electronic circuit", "amount": 2 },
+      { "name": "Pipe" },
+      { "name": "Iron gear wheel" }
+    ]
+  },
+  {
+    "name": "Assembling machine 1",
+    "time": 0.5,
+    "ingredients": [
+      { "name": "Electronic circuit", "amount": 3 },
+      { "name": "Iron gear wheel", "amount": 5 },
+      { "name": "Iron plate", "amount": 9 }
+    ]
+  },
+  {
+    "name": "Assembling machine 2",
+    "time": 0.5,
+    "ingredients": [
+      { "name": "Iron plate", "amount": 20 },
+      { "name": "Electronic circuit", "amount": 5 },
+      { "name": "Iron gear wheel", "amount": 10 },
+      { "name": "Assembling machine 1" }
+    ]
+  },
 
   ////////////////////////
   // Intermediate Products

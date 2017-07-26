@@ -12,4 +12,12 @@ class Recipes
       recipes
     end
   end
+
+  def self.find(name)
+    all.find { |r| r.name == name }
+  end
+
+  def self.find!(name)
+    find(name) || raise("Unknown recipe: #{name.inspect}")
+  end
 end
