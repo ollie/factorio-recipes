@@ -87,7 +87,8 @@
       { "name": "Electronic circuit", "amount": 3 },
       { "name": "Iron gear wheel", "amount": 5 },
       { "name": "Iron plate", "amount": 9 }
-    ]
+    ],
+    "crafting_speed": 0.5
   },
   {
     "name": "Assembling machine 2",
@@ -97,7 +98,8 @@
       { "name": "Electronic circuit", "amount": 5 },
       { "name": "Iron gear wheel", "amount": 10 },
       { "name": "Assembling machine 1" }
-    ]
+    ],
+    "crafting_speed": 0.75
   },
 
   ////////////////////////
@@ -110,7 +112,8 @@
     "time": 3.5,
     "ingredients": [
       { "name": "Iron ore" }
-    ]
+    ],
+    "smelting": 1.75
   },
   {
     "name": "Copper plate",
@@ -118,7 +121,8 @@
     "time": 3.5,
     "ingredients": [
       { "name": "Copper ore" }
-    ]
+    ],
+    "smelting": 1.75
   },
   {
     "name": "Steel plate",
@@ -126,7 +130,8 @@
     "time": 35,
     "ingredients": [
       { "name": "Iron plate", "amount": 10 }
-    ]
+    ],
+    "smelting": 17.5
   },
   {
     "name": "Iron gear wheel",

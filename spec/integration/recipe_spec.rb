@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe Recipe do
-  context 'calculate' do
+  context 'tree' do
     # 1 Offshore pump
     #   2 Electronic circuit
     #     2*2=4 Iron plate
@@ -15,7 +15,7 @@ RSpec.describe Recipe do
     # 10 Iron plate
     # 10 Copper plate
     it '1 Offshore pump' do
-      actual = Recipe.calculate('Offshore pump', 1)
+      actual = Recipe.tree('Offshore pump', 1)
       expected = {
         amount: 1,
         name: 'Offshore pump',
@@ -65,10 +65,10 @@ RSpec.describe Recipe do
             ]
           }
         ],
-        raws: {
-          'Iron plate' => 10,
-          'Copper plate' => 10
-        }
+        # raws: {
+        #   'Iron plate' => 10,
+        #   'Copper plate' => 10
+        # }
       }
 
       expect(actual).to eq(expected)
@@ -87,7 +87,7 @@ RSpec.describe Recipe do
     # 50 Iron plate
     # 50 Copper plate
     it '5 Offshore pump' do
-      actual = Recipe.calculate('Offshore pump', 5)
+      actual = Recipe.tree('Offshore pump', 5)
       expected = {
         amount: 5,
         name: 'Offshore pump',
@@ -137,10 +137,10 @@ RSpec.describe Recipe do
             ]
           }
         ],
-        raws: {
-          'Iron plate' => 50,
-          'Copper plate' => 50
-        }
+        # raws: {
+        #   'Iron plate' => 50,
+        #   'Copper plate' => 50
+        # }
       }
 
       expect(actual).to eq(expected)
@@ -166,7 +166,7 @@ RSpec.describe Recipe do
     # 105 Iron plate
     # 40 Copper plate
     it '1 Assembling machine 2' do
-      actual = Recipe.calculate('Assembling machine 2', 1)
+      actual = Recipe.tree('Assembling machine 2', 1)
       expected = {
         amount: 1,
         name: 'Assembling machine 2',
@@ -254,10 +254,10 @@ RSpec.describe Recipe do
             ]
           }
         ],
-        raws: {
-          'Iron plate' => 105,
-          'Copper plate' => 40
-        }
+        # raws: {
+        #   'Iron plate' => 105,
+        #   'Copper plate' => 40
+        # }
       }
 
       expect(actual).to eq(expected)
@@ -271,7 +271,7 @@ RSpec.describe Recipe do
     # 4 Iron plate
     # 1 Copper plate
     it '1 Science pack 1' do
-      actual = Recipe.calculate('Science pack 1', 1)
+      actual = Recipe.tree('Science pack 1', 1)
       expected = {
         amount: 1,
         name: 'Science pack 1',
@@ -293,10 +293,10 @@ RSpec.describe Recipe do
             ]
           }
         ],
-        raws: {
-          'Copper plate' => 1,
-          'Iron plate' => 4
-        }
+        # raws: {
+        #   'Copper plate' => 1,
+        #   'Iron plate' => 4
+        # }
       }
 
       expect(actual).to eq(expected)
@@ -319,7 +319,7 @@ RSpec.describe Recipe do
     # 9.5 Iron plate
     # 5 Copper plate
     it '1 Science pack 2' do
-      actual = Recipe.calculate('Science pack 2', 1)
+      actual = Recipe.tree('Science pack 2', 1)
       expected = {
         amount: 1,
         name: 'Science pack 2',
@@ -391,10 +391,10 @@ RSpec.describe Recipe do
             ]
           }
         ],
-        raws: {
-          'Iron plate' => 9.5,
-          'Copper plate' => 5
-        }
+        # raws: {
+        #   'Iron plate' => 9.5,
+        #   'Copper plate' => 5
+        # }
       }
 
       expect(actual).to eq(expected)
@@ -420,7 +420,7 @@ RSpec.describe Recipe do
     # 7.5 Copper plate
     # 0.5 Steel plate
     it '1 Military science pack' do
-      actual = Recipe.calculate('Military science pack', 1)
+      actual = Recipe.tree('Military science pack', 1)
       expected = {
         amount: 1,
         name: 'Military science pack',
@@ -497,11 +497,11 @@ RSpec.describe Recipe do
             ]
           }
         ],
-        raws: {
-          'Iron plate' => 39.5,
-          'Steel plate' => 0.5,
-          'Copper plate' => 7.5
-        }
+        # raws: {
+        #   'Iron plate' => 39.5,
+        #   'Steel plate' => 0.5,
+        #   'Copper plate' => 7.5
+        # }
       }
 
       expect(actual).to eq(expected)

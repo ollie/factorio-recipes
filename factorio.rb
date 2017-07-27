@@ -14,13 +14,17 @@ def pr(recipe, level: 1)
     pr(ingredient, level: level + 1)
   end
 
-  return unless level == 1
+  return unless recipe[:raws]
 
   puts
-  recipe.fetch(:raws).each do |name, amount|
+  recipe[:raws].each do |name, amount|
     puts "#{amount} #{name}"
   end
 end
+
+################
+# Resource trees
+################
 
 # 1 Offshore pump
 #   2 Electronic circuit
@@ -34,7 +38,8 @@ end
 #
 # 10 Iron plate
 # 10 Copper plate
-pr Recipe.calculate('Offshore pump', 1)
+# pr Recipe.calculate('Offshore pump', 1)
+# pr Recipe.calculate('Offshore pump', 1)
 
 # 1 Assembling machine 2
 #   20 Iron plate
@@ -104,3 +109,63 @@ pr Recipe.calculate('Offshore pump', 1)
 # 7.5 Copper plate
 # 0.5 Steel plate
 # pr Recipe.calculate('Military science pack', 1)
+
+#####################
+# Totals and Machines
+#####################
+
+# Yellow belt: 13.333 i/s
+# Red belt:    26.667 i/s
+# Blue belt:   40 i/s
+#
+# Miner new
+# Iron, Copper, Coal: 0.525 i/s
+# Stone:              0.65 i/s
+#
+# Steel/Electric furnace
+# Iron, Copper, Stone: 0.5714 i/s (1.75 s/i)
+# Steel:               0.0572     (17.5 s/i)
+#
+# Assembly 2: Crafting speed: 0.75
+
+def pt(label, totals)
+  puts "  #{label}"
+  totals.sort.each { |name, amount| puts "    #{name}: #{amount}" }
+end
+
+def woo(recipe_names, amount)
+  total_machines = {}
+  total_smelters = {}
+
+  recipe_names.each do |recipe_name|
+    puts "#{amount} #{recipe_name}"
+    tree     = Recipe.tree(recipe_name, amount)
+    totals   = Recipe.totals(tree)
+    machines = Recipe.machines(totals)
+    smelters = Recipe.smelters(totals)
+    pt 'Totals:', totals
+    pt 'Machines:', machines
+    pt 'Smelters:', smelters
+    puts
+
+    machines.each { |name, amount| total_machines[name] ||= 0; total_machines[name] += amount }
+    smelters.each { |name, amount| total_smelters[name] ||= 0; total_smelters[name] += amount }
+  end
+
+  puts '-----------'
+  puts
+  puts 'Grand total:'
+  puts '  Machines:'
+  total_machines.sort.each { |name, amount| puts "    #{name}: #{amount}" }
+  puts '  Smelters:'
+  total_smelters.sort.each { |name, amount| puts "    #{name}: #{amount}" }
+end
+
+woo(
+  [
+    'Science pack 1',
+    'Science pack 2',
+    'Military science pack'
+  ],
+  2
+)
