@@ -8,7 +8,7 @@ class Recipe
         if false && recipe[:raw]
           []
         else
-          recipe.fetch(:ingredients).reject { |ingredient| all.fetch(ingredient.fetch(:name))[:ore] }.map do |ingredient|
+          recipe.fetch(:ingredients).map do |ingredient|
             ingredient_name = ingredient.fetch(:name)
             # Some recipes produce 2 items.
             ingredient_amount = amount.to_f / recipe.fetch(:amount, 1) * ingredient.fetch(:amount, 1)
@@ -54,7 +54,9 @@ class Recipe
 
     def machines(totals, machine: 'Assembling machine 2')
       {}.tap do |machines|
-        totals.reject { |name, _| all.fetch(name)[:raw] }.each do |name, amount|
+        totals
+          .reject { |name, _| all.fetch(name)[:raw] || all.fetch(name)[:ore] }
+          .each do |name, amount|
           recipe         = all.fetch(name)
           machine_recipe = all.fetch(machine)
           machines[name] = (amount / (recipe.fetch(:amount_per_second) * machine_recipe.fetch(:crafting_speed))).ceil
@@ -67,6 +69,15 @@ class Recipe
         totals.select { |name, _| all.fetch(name)[:raw] }.each do |name, amount|
           recipe         = all.fetch(name)
           smelters[name] = (amount * recipe.fetch(:smelting)).ceil
+        end
+      end
+    end
+
+    def miners(totals)
+      {}.tap do |miners|
+        totals.select { |name, _| all.fetch(name)[:ore] }.each do |name, amount|
+          recipe       = all.fetch(name)
+          miners[name] = (amount * (1 / recipe.fetch(:mining_per_second))).ceil
         end
       end
     end

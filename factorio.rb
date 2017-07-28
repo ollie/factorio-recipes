@@ -136,6 +136,7 @@ end
 def woo(recipe_names, amount)
   total_machines = {}
   total_smelters = {}
+  total_miners   = {}
 
   recipe_names.each do |recipe_name|
     puts "#{amount} #{recipe_name}"
@@ -143,13 +144,16 @@ def woo(recipe_names, amount)
     totals   = Recipe.totals(tree)
     machines = Recipe.machines(totals)
     smelters = Recipe.smelters(totals)
+    miners   = Recipe.miners(totals)
     pt 'Totals:', totals
     pt 'Machines:', machines
     pt 'Smelters:', smelters
+    pt 'Miners:', miners
     puts
 
     machines.each { |name, amount| total_machines[name] ||= 0; total_machines[name] += amount }
     smelters.each { |name, amount| total_smelters[name] ||= 0; total_smelters[name] += amount }
+    miners.each   { |name, amount| total_miners[name]   ||= 0; total_miners[name]   += amount }
   end
 
   puts '-----------'
@@ -159,6 +163,8 @@ def woo(recipe_names, amount)
   total_machines.sort.each { |name, amount| puts "    #{name}: #{amount}" }
   puts '  Smelters:'
   total_smelters.sort.each { |name, amount| puts "    #{name}: #{amount}" }
+  puts '  Miners:'
+  total_miners.sort.each   { |name, amount| puts "    #{name}: #{amount}" }
 end
 
 woo(
