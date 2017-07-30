@@ -67,6 +67,13 @@
       { "name": "Iron plate", "amount": 2 }
     ]
   },
+  {
+    "name": "Landfill",
+    "time": 0.5,
+    "ingredients": [
+      { "name": "Stone", "amount": 20 }
+    ]
+  },
 
   /////////////
   // Production
